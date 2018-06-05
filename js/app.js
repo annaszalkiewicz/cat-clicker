@@ -1,37 +1,56 @@
-const container = document.getElementById('cat-container');
+const container = document.getElementById('container');
 const catImages = document.getElementsByClassName('image');
+let count = 0;
 
 class Cat {
 
-  constructor(name = '', image= '', count = 0) {
+  constructor(name = '', image= '', count = 0, container = '') {
     this.name = name;
     this.image = image;
     this.count = count;
+    this.container = container;
+  }
+
+  createCatContainer() {
+    const div = document.createElement('div');
+
+    container.appendChild(div);
+    div.classList.add('cat-container');
+    div.setAttribute('id', this.container);
+    this.giveName();
   }
 
   giveName() {
     const newHeading = document.createElement('h2');
-    container.appendChild(newHeading);
+    const catContainer = document.getElementById(this.container);
+
+    catContainer.appendChild(newHeading);
     newHeading.classList.add('cat-name');
     newHeading.innerHTML = this.name;
+    this.createImage();
   }
 
   createImage() {
 
     const img = document.createElement('img');
-    container.appendChild(img);
+    const source = `./img/${this.image}.jpg`;
+    const catContainer = document.getElementById(this.container);
+
+    catContainer.appendChild(img);
     img.classList.add('image');
-    source = `./img/${this.image}.jpg`;
     img.setAttribute('src', source);
     img.setAttribute('alt', this.name);
+    this.events();
 
   }
 
   clickerCount() {
 
     const p = document.createElement('p');
-    container.appendChild(p);
-    p.classList.add('text');
+    const catContainer = document.getElementById(this.container);
+    
+    catContainer.appendChild(p);
+    p.classList.add('caption');
 
     count += 1;
 
@@ -46,15 +65,18 @@ class Cat {
   }
 
   events() {
-    for (catImage of catImages) {
-      catImages.addEventListener('click', this.clickerCount);
+    for (let catImage of catImages) {
+      catImage.addEventListener('click', this.clickerCount);
     }
   }
 
 }
 
-const cat1 = new Cat('Garfield', 'garfield', 0);
-const cat2 = new Cat('Nermal', 'nermal', 0);
+const cat1 = new Cat('Garfield', 'garfield', 0, 'cat1');
+const cat2 = new Cat('Nermal', 'nermal', 0, 'cat2');
+
+cat1.createCatContainer();
+cat2.createCatContainer();
 
 // function clickACat() {
 //   const p = document.createElement('p');
