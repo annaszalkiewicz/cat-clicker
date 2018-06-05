@@ -40,6 +40,7 @@ class Cat {
     img.classList.add('image');
     img.setAttribute('src', source);
     img.setAttribute('alt', this.name);
+    // img.addEventListener('click', this.clickerCount);
     this.events();
 
   }
@@ -47,7 +48,8 @@ class Cat {
   clickerCount() {
 
     const p = document.createElement('p');
-    const catContainer = document.getElementById(this.container);
+    const catContainer = this.parentElement;
+    let img = document.getElementsByTagName('img');
     
     catContainer.appendChild(p);
     p.classList.add('caption');
