@@ -43,6 +43,7 @@ class Cat {
     img.classList.add('image');
     img.setAttribute('src', source);
     img.setAttribute('alt', this.name);
+    img.setAttribute('id', this.clicks);
     this.createCaption();
 
   }
@@ -55,15 +56,13 @@ class Cat {
 
     catContainer.appendChild(p);
     p.classList.add('caption');
-    p.setAttribute('id', this.clicks);
     this.clickerCount();
 
   }
 
   clickerCount() {
 
-    const caption = document.querySelectorAll('.caption');
-    const imgToClick = document.getElementById(this.clicks).previousElementSibling;
+    const imgToClick = document.getElementById(this.clicks);
 
     imgToClick.addEventListener('click', function (event) {
 
