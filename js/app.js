@@ -4,7 +4,8 @@ let count = 0;
 
 class Cat {
 
-  constructor(name = '', image= '', count = 0, container = '', clicks = '') {
+  constructor(id = '', name = '', image= '', count = 0, container = '', clicks = '') {
+    this.id = id;
     this.name = name;
     this.image = image;
     this.count = count;
@@ -56,35 +57,57 @@ class Cat {
 
     catContainer.appendChild(p);
     p.classList.add('caption');
+
     this.clickerCount();
 
   }
 
   clickerCount() {
 
-    const imgToClick = document.getElementById(this.clicks);
+    const cats = document.getElementsByClassName('image');
 
-    imgToClick.addEventListener('click', function (event) {
+    for (let i = 0; i < cats.length; i++) {
+      const cat = cats[i];
 
-        const p = event.target.nextElementSibling;
+      cat.addEventListener('click', (function(catCopy) {
+        return function () {
+          const p = catCopy.nextElementSibling;
+          count +=1;
+          if (count === 1) {
+                p.textContent = `You clicked cat ${count} time.`
+              } 
+              else if (count >= 2) {
+                p.textContent = `You clicked cat ${count} times.`
+              }          
+        };
+      })(cat));
+      
+    }
 
-        count++;
+    // const imgToClick = document.getElementById(this.clicks);
+    
+    // imgToClick.addEventListener('click', function () {
 
-        if (count === 1) {
-          p.textContent = `You clicked cat ${count} time.`
-        } 
-        else if (count >= 2) {
-          p.textContent = `You clicked cat ${count} times.`
-        } 
+    //     const p = imgToClick.nextElementSibling;
+        
+    //     count += 1;
+
+    //     if (count === 1) {
+    //       p.textContent = `You clicked cat ${count} time.`
+    //     } 
+    //     else if (count >= 2) {
+    //       p.textContent = `You clicked cat ${count} times.`
+    //     } 
   
-    });
+    // });
     
   }
 
+
 }
 
-const cat1 = new Cat('Garfield', 'garfield', 0, 'cat1', 'cat1Image');
-const cat2 = new Cat('Nermal', 'nermal', 0, 'cat2', 'cat2Image');
+const cat1 = new Cat('Garfield', 'Garfield', 'garfield', 0, 'cat1', 'cat1Image');
+const cat2 = new Cat('Nermal', 'Nermal', 'nermal', 0, 'cat2', 'cat2Image');
 
 cat1.createCatContainer();
 cat2.createCatContainer();
