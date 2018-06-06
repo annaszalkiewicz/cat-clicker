@@ -90,6 +90,8 @@ class Cat {
 
 const cat1 = new Cat('Garfield', 'Garfield', 'garfield', 0, 'cat1', 'cat1Image');
 const cat2 = new Cat('Nermal', 'Nermal', 'nermal', 0, 'cat2', 'cat2Image');
+const cat3 = new Cat('Arlene', 'Arlene', 'arlene', 0, 'cat3', 'cat2Image')
 
 cat1.createCatContainer();
 cat2.createCatContainer();
+cat3.createCatContainer();
