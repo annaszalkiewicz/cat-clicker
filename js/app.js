@@ -1,6 +1,5 @@
 const container = document.getElementById('container');
 const catImages = document.getElementsByClassName('image');
-let count = 0;
 
 class Cat {
 
@@ -70,6 +69,7 @@ class Cat {
       const cat = cats[i];
 
       cat.addEventListener('click', (function(catCopy) {
+        let count = 0;
         return function () {
           const p = catCopy.nextElementSibling;
           count +=1;
@@ -84,25 +84,7 @@ class Cat {
       
     }
 
-    // const imgToClick = document.getElementById(this.clicks);
-    
-    // imgToClick.addEventListener('click', function () {
-
-    //     const p = imgToClick.nextElementSibling;
-        
-    //     count += 1;
-
-    //     if (count === 1) {
-    //       p.textContent = `You clicked cat ${count} time.`
-    //     } 
-    //     else if (count >= 2) {
-    //       p.textContent = `You clicked cat ${count} times.`
-    //     } 
-  
-    // });
-    
   }
-
 
 }
 
