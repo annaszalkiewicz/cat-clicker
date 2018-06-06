@@ -4,14 +4,16 @@ let count = 0;
 
 class Cat {
 
-  constructor(name = '', image= '', count = 0, container = '') {
+  constructor(name = '', image= '', count = 0, container = '', clicks = '') {
     this.name = name;
     this.image = image;
     this.count = count;
     this.container = container;
+    this.clicks = clicks;
   }
 
   createCatContainer() {
+
     const div = document.createElement('div');
 
     container.appendChild(div);
@@ -21,6 +23,7 @@ class Cat {
   }
 
   giveName() {
+
     const newHeading = document.createElement('h2');
     const catContainer = document.getElementById(this.container);
 
@@ -40,65 +43,49 @@ class Cat {
     img.classList.add('image');
     img.setAttribute('src', source);
     img.setAttribute('alt', this.name);
-    // img.addEventListener('click', this.clickerCount);
-    this.events();
+    this.createCaption();
+
+  }
+
+  createCaption() {
+
+    const p = document.createElement('p');
+    const catContainer = document.getElementById(this.container);
+    let img = document.getElementsByTagName('img');
+
+    catContainer.appendChild(p);
+    p.classList.add('caption');
+    p.setAttribute('id', this.clicks);
+    this.clickerCount();
 
   }
 
   clickerCount() {
 
-    const p = document.createElement('p');
-    const catContainer = this.parentElement;
-    let img = document.getElementsByTagName('img');
+    const caption = document.querySelectorAll('.caption');
+    const imgToClick = document.getElementById(this.clicks).previousElementSibling;
+
+    imgToClick.addEventListener('click', function (event) {
+
+        const p = event.target.nextElementSibling;
+
+        count++;
+
+        if (count === 1) {
+          p.textContent = `You clicked cat ${count} time.`
+        } 
+        else if (count >= 2) {
+          p.textContent = `You clicked cat ${count} times.`
+        } 
+  
+    });
     
-    catContainer.appendChild(p);
-    p.classList.add('caption');
-
-    count += 1;
-
-    if (count === 1) {
-      p.innerHTML = `You clicked cat ${count} time.`
-    } 
-    else if (count >= 2) {
-      p.previousSibling.style.display = 'none';
-      p.innerHTML = `You clicked cat ${count} times.`
-    } 
-
-  }
-
-  events() {
-    for (let catImage of catImages) {
-      catImage.addEventListener('click', this.clickerCount);
-    }
   }
 
 }
 
-const cat1 = new Cat('Garfield', 'garfield', 0, 'cat1');
-const cat2 = new Cat('Nermal', 'nermal', 0, 'cat2');
+const cat1 = new Cat('Garfield', 'garfield', 0, 'cat1', 'cat1Image');
+const cat2 = new Cat('Nermal', 'nermal', 0, 'cat2', 'cat2Image');
 
 cat1.createCatContainer();
 cat2.createCatContainer();
-
-// function clickACat() {
-//   const p = document.createElement('p');
-//   const caption = document.querySelector('.photo-caption');
-//   caption.appendChild(p);
-//   p.classList.add('text');
-
-//   count += 1;
-
-//   if (count === 1) {
-//     p.innerHTML = `You clicked cat ${count} time.`
-//   } 
-//   else if (count >= 2) {
-//     p.previousSibling.style.display = 'none';
-//     p.innerHTML = `You clicked cat ${count} times.`
-//   }
-  
-//   console.log(`You clicked cat ${count} times.`);
-// }
-
-// for (const allPhoto of allPhotos) {
-//   allPhoto.addEventListener('click', clickerCount);
-// }
