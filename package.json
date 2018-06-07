@@ -1,0 +1,23 @@
+{
+  "name": "cat-clicker",
+  "version": "1.0.0",
+  "description": "Project for Front-End Developer Nanodegree Program by Udacity",
+  "main": "\u001b[D\u001b[D\u001b[D\u001bindex\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D",
+  "scripts": {
+    "build": "babel js -d jsES5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annaszalkiewicz/cat-clicker.git"
+  },
+  "author": "Anna Szalkiewicz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/annaszalkiewicz/cat-clicker/issues"
+  },
+  "homepage": "https://github.com/annaszalkiewicz/cat-clicker#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
