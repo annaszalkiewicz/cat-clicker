@@ -8,8 +8,8 @@ Project for Front-End Developer Nanodegree Program by Udacity
 
 ## Dependencies
 
-[Font Pacifico on Google](https://fonts.google.com/specimen/Pacifico/)
-[Font Montserrat on Google](https://fonts.google.com/specimen/Montserrat/)
+- [Font Pacifico on Google](https://fonts.google.com/specimen/Pacifico/)
+- [Font Montserrat on Google](https://fonts.google.com/specimen/Montserrat/)
 
 ## Licence
 
