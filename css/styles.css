@@ -34,12 +34,14 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
 }
 .cat-container {
   max-width: 95%;
   margin: 2em auto 0 auto;
   box-shadow: 0 0 20px #757575;
+  background-color: #fff;
 }
 .cat-container:hover {
   cursor: pointer;
@@ -78,4 +80,18 @@ body {
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    background-image: url('../img/background.jpg');
+    background-position: bottom right;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+  .cat-container {
+    width: 45%;
+    max-width: 395px;
+  }
 }
